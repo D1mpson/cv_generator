@@ -1,0 +1,193 @@
+/* Основні стилі для тіла сторінки */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Стилі для різних шрифтів */
+body[data-font="Arial"] {
+    font-family: Arial, sans-serif;
+}
+body[data-font="Times New Roman"] {
+    font-family: "Times New Roman", Times, serif;
+}
+body[data-font="Calibri"] {
+    font-family: Calibri, sans-serif;
+}
+body[data-font="Verdana"] {
+    font-family: Verdana, Geneva, sans-serif;
+}
+body[data-font="Roboto"] {
+    font-family: Roboto, sans-serif;
+}
+
+/* Контейнер для CV */
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Стилі для заголовка CV */
+.cv-header {
+    display: flex;
+    padding: 30px;
+    background-color: #0056b3;
+    color: white;
+    border-bottom: 5px solid #0056b3;
+}
+
+/* Ліва частина заголовка з фото */
+.header-left {
+    flex: 0 0 180px;
+    margin-right: 30px;
+}
+
+/* Права частина заголовка з ім'ям та контактами */
+.header-right {
+    flex: 1;
+}
+
+/* Контейнер для фото профілю */
+.photo-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    background-color: #f0f0f0;
+}
+
+/* Стиль для самого фото */
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Стиль для імені */
+.name {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Контейнер для контактної інформації */
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Окремий елемент контактної інформації */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+/* Іконки контактної інформації */
+.contact-item i {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+/* Основний контейнер контенту */
+.main-content {
+    padding: 30px;
+}
+
+/* Секція CV */
+.section {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+/* Рядок для секцій навичок */
+.skills-row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Заголовок секції */
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0056b3;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #0056b3;
+    display: inline-block;
+}
+
+/* Контент секції */
+.section-content {
+    padding-left: 5px;
+}
+
+/* Стилі для всіх списків */
+.skills-list,
+.languages-list,
+.education-list,
+.courses-list,
+.work-list,
+.portfolio-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Елементи списків */
+.skills-list li,
+.languages-list li,
+.education-list li,
+.courses-list li,
+.work-list li,
+.portfolio-list li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* Особливий дизайн для посилань портфоліо */
+.portfolio-list li a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.portfolio-list li a:hover {
+    color: #003d7a;
+    text-decoration: underline;
+}
+
+/* Стилі для фіксованого блоку кнопок */
+.actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+/* Стилі для друку */
+@media print {
+    body {
+        background-color: white;
+    }
+    .cv-container {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .section {
+        page-break-inside: avoid;
+    }
+    .actions {
+        display: none;
+    }
+}

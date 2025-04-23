@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator - Профіль</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+<!-- Підключення хедера -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- Основний контент -->
+<div class="main-content">
+    <div class="profile-container">
+        <!-- Ліва колонка - Інформація про користувача -->
+        <div class="user-info">
+            <div class="user-info-header">
+                <h2>Інформація про користувача</h2>
+            </div>
+            <div class="user-info-content">
+                <h3 th:text="${user.firstName + ' ' + user.lastName}">First_name Last_name</h3>
+
+                <div class="detail-item">
+                    <span>Email: </span>
+                    <span th:text="${user.email}">email@email.domain</span>
+                </div>
+
+                <div class="detail-item">
+                    <span>Телефон: </span>
+                    <span th:text="${user.phoneNumber}">+380XXXXXXXXX</span>
+                </div>
+
+                <div class="detail-item">
+                    <span>Дата народження: </span>
+                    <span th:text="${#temporals.format(user.birthDate, 'dd.MM.yyyy')}">DD.MM.YYYY</span>
+                </div>
+
+                <div class="user-actions">
+                    <a href="/edit-profile" class="btn edit-profile-btn">Редагувати профіль</a>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn logout-btn">Вийти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Права колонка - Резюме користувача -->
+        <div class="cv-container">
+            <div class="cv-header">
+                <div class="cv-title">
+                    <h2>Мої резюме</h2>
+                </div>
+                <div class="cv-actions">
+                    <a href="/generator" class="btn create-cv-btn">Створити нове CV</a>
+                    <a href="/all-cv" class="btn view-all-btn">Переглянути всі</a>
+                </div>
+            </div>
+
+            <div class="cv-list">
+                <!-- Якщо резюме немає -->
+                <div th:if="${#lists.isEmpty(cvList)}" class="no-cv">
+                    <p>У вас ще немає створених CV</p>
+                    <a href="/generator" class="btn btn-primary">Створити CV</a>
+                </div>
+
+                <!-- Якщо є резюме -->
+                <div th:unless="${#lists.isEmpty(cvList)}" class="cv-grid">
+                    <div class="cv-card" th:each="cv : ${cvList}">
+                        <div class="cv-name" th:text="${cv.name}">Name CV</div>
+
+                        <div class="cv-info">
+                            <div class="cv-info-item">
+                                <span>Шаблон:</span><br>
+                                <span th:text="${cv.template != null ? cv.template.name : 'Не вказано'}">шаблон CV</span>
+                            </div>
+
+                            <div class="cv-info-item">
+                                <span>Створено:</span><br>
+                                <span th:text="${#temporals.format(cv.createdAt, 'dd.MM.yyyy HH:mm')}">дата створення</span>
+                            </div>
+                        </div>
+
+                        <div class="cv-buttons">
+                            <a th:href="@{/cv/{id}(id=${cv.id})}" class="btn view-btn">Переглянути</a>
+                            <a th:href="@{/cv/{id}/edit(id=${cv.id})}" class="btn edit-btn">Редагувати</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Підключення футера -->
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

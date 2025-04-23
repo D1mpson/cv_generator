@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${cv.name}">Професійне CV</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/style-cv1.css}">
+</head>
+<body th:attr="data-font=${cv.font}">
+<div class="container my-5">
+    <div class="cv-container">
+        <header class="cv-header">
+            <div class="header-left">
+                <div class="photo-container" th:if="${cv.photoPath != null && !cv.photoPath.isEmpty()}">
+                    <img th:src="@{'/uploads/photos/' + ${cv.photoPath}}" class="photo" alt="Фото">
+                </div>
+            </div>
+            <div class="header-right">
+                <h1 class="name" th:text="${cv.user.firstName + ' ' + cv.user.lastName}">Ім'я Прізвище</h1>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <span th:text="${cv.user.email}">email@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <span th:text="${cv.user.phoneNumber}">+380XXXXXXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-calendar"></i>
+                        <span th:text="${#temporals.format(cv.user.birthDate, 'dd.MM.yyyy')}">01.01.1990</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Про мене -->
+            <section class="section" th:if="${cv.aboutMe != null && !cv.aboutMe.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Про мене' : 'About Me'}">Про мене</span>
+                </h3>
+                <div class="section-content">
+                    <p th:text="${cv.aboutMe}">Інформація про себе</p>
+                </div>
+            </section>
+
+            <!-- Навички -->
+            <div class="row skills-row" th:if="${cv.softSkills != null && !cv.softSkills.isEmpty() || cv.hardSkills != null && !cv.hardSkills.isEmpty()}">
+                <div class="col-md-6" th:if="${cv.softSkills != null && !cv.softSkills.isEmpty()}">
+                    <section class="section">
+                        <h3 class="section-title">
+                            <span th:text="${cv.language == 'uk' ? 'Софт скіли' : 'Soft Skills'}">Софт скіли</span>
+                        </h3>
+                        <div class="section-content">
+                            <ul class="skills-list">
+                                <li th:each="skill : ${#strings.arraySplit(cv.softSkills, ',')}" th:text="${#strings.trim(skill)}">Комунікабельність</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-6" th:if="${cv.hardSkills != null && !cv.hardSkills.isEmpty()}">
+                    <section class="section">
+                        <h3 class="section-title">
+                            <span th:text="${cv.language == 'uk' ? 'Хард скіли' : 'Hard Skills'}">Хард скіли</span>
+                        </h3>
+                        <div class="section-content">
+                            <ul class="skills-list">
+                                <li th:each="skill : ${#strings.arraySplit(cv.hardSkills, ',')}" th:text="${#strings.trim(skill)}">HTML</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Мови -->
+            <section class="section" th:if="${!#lists.isEmpty(cv.knownLanguages) || cv.otherLanguages != null && !cv.otherLanguages.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Мови' : 'Languages'}">Мови</span>
+                </h3>
+                <div class="section-content">
+                    <ul class="languages-list">
+                        <li th:each="lang : ${cv.knownLanguages}" th:text="${lang}">Українська</li>
+                        <li th:each="lang : ${#strings.arraySplit(cv.otherLanguages, ',')}" th:if="${!#strings.isEmpty(#strings.trim(lang))}" th:text="${#strings.trim(lang)}">Інша мова</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Освіта -->
+            <section class="section" th:if="${cv.education != null && !cv.education.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Освіта' : 'Education'}">Освіта</span>
+                </h3>
+                <div class="section-content">
+                    <ul class="education-list">
+                        <li th:each="edu : ${#strings.arraySplit(cv.education, ',')}" th:if="${!#strings.isEmpty(#strings.trim(edu))}" th:text="${#strings.trim(edu)}">Інформація про освіту</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Курси -->
+            <section class="section" th:if="${cv.courses != null && !cv.courses.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Курси та сертифікати' : 'Courses and Certificates'}">Курси та сертифікати</span>
+                </h3>
+                <div class="section-content">
+                    <ul class="courses-list">
+                        <li th:each="course : ${#strings.arraySplit(cv.courses, ',')}" th:if="${!#strings.isEmpty(#strings.trim(course))}" th:text="${#strings.trim(course)}">Інформація про курси</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Досвід роботи -->
+            <section class="section" th:if="${cv.workExperience != null && !cv.workExperience.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Досвід роботи' : 'Work Experience'}">Досвід роботи</span>
+                </h3>
+                <div class="section-content">
+                    <ul class="work-list">
+                        <li th:each="work : ${#strings.arraySplit(cv.workExperience, ',')}" th:if="${!#strings.isEmpty(#strings.trim(work))}" th:text="${#strings.trim(work)}">Інформація про досвід роботи</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Портфоліо -->
+            <section class="section" th:if="${!#lists.isEmpty(cv.portfolioLinks)}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Портфоліо' : 'Portfolio'}">Портфоліо</span>
+                </h3>
+                <div class="section-content">
+                    <ul class="portfolio-list">
+                        <li th:each="link : ${cv.portfolioLinks}" th:if="${!#strings.isEmpty(link)}">
+                            <a th:href="${link}" target="_blank" th:text="${link}">https://example.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Хобі -->
+            <section class="section" th:if="${cv.hobbies != null && !cv.hobbies.isEmpty()}">
+                <h3 class="section-title">
+                    <span th:text="${cv.language == 'uk' ? 'Хобі та інтереси' : 'Hobbies and Interests'}">Хобі та інтереси</span>
+                </h3>
+                <div class="section-content">
+                    <p th:text="${cv.hobbies}">Опис хобі</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="actions">
+        <div class="btn-group">
+            <a th:href="@{/cv/{id}/edit(id=${cv.id})}" class="btn btn-primary">
+                <span th:text="${cv.language == 'uk' ? 'Редагувати' : 'Edit'}">Редагувати</span>
+            </a>
+            <button onclick="window.print()" class="btn btn-success">
+                <span th:text="${cv.language == 'uk' ? 'Друк' : 'Print'}">Друк</span>
+            </button>
+            <a href="/all-cv" class="btn btn-secondary">
+                <span th:text="${cv.language == 'uk' ? 'Назад' : 'Back'}">Назад</span>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

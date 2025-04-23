@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator - Мої резюме</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/all-cv.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+<!-- Підключення хедера -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- Main content -->
+<main class="main-content">
+    <div class="page-header">
+        <h2>Мої резюме</h2>
+        <div class="header-actions">
+            <a href="/generator" class="btn create-btn">Створити нове CV</a>
+        </div>
+    </div>
+
+    <!-- Якщо резюме немає -->
+    <div th:if="${#lists.isEmpty(cvList)}" class="no-cv-message">
+        <p>У вас ще немає створених CV</p>
+        <a href="/generator" class="btn create-btn">Створити CV</a>
+    </div>
+
+    <!-- Якщо є резюме -->
+    <div th:unless="${#lists.isEmpty(cvList)}" class="cv-grid">
+        <div class="cv-card" th:each="cv : ${cvList}">
+            <h3 class="cv-title" th:text="${cv.name}">Name CV</h3>
+
+            <div class="cv-info">
+                <div class="cv-info-item">
+                    <span class="info-label">Шаблон:</span>
+                    <span class="info-value" th:text="${cv.template != null ? cv.template.name : 'Не вказано'}">шаблон CV</span>
+                </div>
+
+                <div class="cv-info-item">
+                    <span class="info-label">Створено:</span>
+                    <span class="info-value" th:text="${#temporals.format(cv.createdAt, 'dd.MM.yyyy HH:mm')}">дата створення</span>
+                </div>
+            </div>
+
+            <div class="cv-actions">
+                <a th:href="@{/cv/{id}(id=${cv.id})}" class="btn view-btn">Переглянути</a>
+                <a th:href="@{/cv/{id}/edit(id=${cv.id})}" class="btn edit-btn">Редагувати</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Підключення футера -->
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

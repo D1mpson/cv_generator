@@ -1,0 +1,149 @@
+/* header.css */
+@import 'variables.css';
+
+/* Загальні стилі для хедера */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Стилі для логотипу */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 100px;
+}
+
+/* Стилі для навігаційного меню */
+.main-nav {
+    flex-grow: 1;
+    margin-left: 40px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #FF5A34;
+}
+
+/* Стилі для відображення емейлу користувача */
+.user-email {
+    margin-left: 20px;
+}
+
+.user-email a {
+    color: #FF5A34;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Стилі для кнопок авторизації */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #E5E5E5;
+    color: #000;
+}
+
+/* Адаптивні стилі для мобільних пристроїв */
+@media (max-width: 992px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .main-nav {
+        margin-left: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .main-nav {
+        margin: 15px 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .user-email {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}

@@ -1,0 +1,317 @@
+/* Основні стилі */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Навігація */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-item {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar-item:hover {
+    text-decoration: underline;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-start, .navbar-end {
+    display: flex;
+    align-items: center;
+}
+
+/* Кнопки */
+.button {
+    display: inline-block;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Герой секція */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* Секції */
+section {
+    margin: 40px 0;
+}
+
+/* Особливості */
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.feature-card {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Форми */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Повідомлення */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+
+.error {
+    color: #a94442;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Профіль */
+.profile-info {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.profile-photo {
+    width: 150px;
+    margin-right: 30px;
+}
+
+.profile-photo img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #999;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-additional-info {
+    margin-top: 30px;
+}
+
+.info-section {
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Список CV */
+.cv-list {
+    margin-top: 30px;
+}
+
+.cv-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.cv-info {
+    flex: 1;
+}
+
+.cv-actions {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.delete-form {
+    display: inline-block;
+}
+
+/* Попередній перегляд CV */
+.cv-preview-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.cv-preview-item {
+    width: 30%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 3%;
+    margin-bottom: 20px;
+}
+
+/* Підказки */
+.hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Футер */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 60px;
+}
+
+/* Adaptивність */
+@media screen and (max-width: 768px) {
+    .feature-card {
+        width: 100%;
+    }
+
+    .profile-info {
+        flex-direction: column;
+    }
+
+    .profile-photo {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .cv-item {
+        flex-direction: column;
+    }
+
+    .cv-preview-item {
+        width: 100%;
+        margin-right: 0;
+    }
+}
