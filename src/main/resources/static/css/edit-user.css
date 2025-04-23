@@ -127,7 +127,7 @@ form {
 }
 
 .role-option input[type="radio"] {
-    margin-right: 10px;
+    margin: 0 10px 0 0;
     width: 18px;
     height: 18px;
 }

@@ -60,7 +60,6 @@ form {
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
     font-weight: 500;
     color: var(--text-color);
 }

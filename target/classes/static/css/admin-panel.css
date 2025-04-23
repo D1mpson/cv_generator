@@ -64,7 +64,7 @@
 
 .users-table th,
 .users-table td {
-    padding: 12px 15px;
+    padding: 12px 8px;
     text-align: left;
     border-bottom: 1px solid var(--light-border);
 }
@@ -148,6 +148,7 @@
         padding: 8px 10px;
         font-size: 14px;
     }
+
 
     .actions {
         display: flex;
