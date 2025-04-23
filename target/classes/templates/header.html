@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!-- Header фрагмент -->
+<header th:fragment="header" class="header">
+    <!-- Логотип -->
+    <div class="logo">
+        <a href="/">
+            <img src="/images/cv-illustration.png" alt="CV Generator" class="logo-image">
+        </a>
+    </div>
+
+    <!-- Навігація для адміністратора -->
+    <nav class="main-nav" sec:authorize="hasRole('ADMIN')">
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Головна</a></li>
+            <li><a th:href="@{/generator}">Створити CV</a></li>
+            <li><a th:href="@{/all-cv}">Мої CV</a></li>
+            <li><a th:href="@{/help}">Довідка</a></li>
+            <li><a th:href="@{/admin}">Адмін-панель</a></li>
+        </ul>
+    </nav>
+
+    <!-- Навігація для авторизованого користувача -->
+    <nav class="main-nav" sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Головна</a></li>
+            <li><a th:href="@{/generator}">Створити CV</a></li>
+            <li><a th:href="@{/all-cv}">Мої CV</a></li>
+            <li><a th:href="@{/help}">Довідка</a></li>
+        </ul>
+    </nav>
+
+    <!-- Навігація для неавторизованого користувача -->
+    <nav class="main-nav" sec:authorize="!isAuthenticated()">
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Головна</a></li>
+            <li><a th:href="@{/help}">Довідка</a></li>
+        </ul>
+    </nav>
+
+    <!-- Відображення емейлу для авторизованого користувача -->
+    <div class="user-email" sec:authorize="isAuthenticated()">
+        <a th:href="@{/profile}">
+            <span sec:authentication="name">dima@gmail.com</span>
+        </a>
+    </div>
+
+    <!-- Кнопки авторизації для неавторизованого користувача -->
+    <div class="auth-buttons" sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}" class="btn btn-primary">Увійти</a>
+        <a th:href="@{/register}" class="btn btn-secondary">Зареєструватися</a>
+    </div>
+</header>
+</body>
+</html>

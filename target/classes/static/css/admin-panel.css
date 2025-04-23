@@ -1,0 +1,183 @@
+/* admin-panel.css */
+@import 'variables.css';
+
+.main-content {
+    flex: 1;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--container-padding);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-panel-container {
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    margin-bottom: var(--section-gap);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.panel-header {
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.panel-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.panel-content {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table-header {
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 15px 20px;
+}
+
+.table-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-border);
+}
+
+.users-table th {
+    background-color: var(--secondary-bg);
+    font-weight: 500;
+}
+
+.users-table tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+.users-table tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+.actions {
+    white-space: nowrap;
+    display: flex;
+    gap: 5px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+}
+
+.btn-details {
+    background-color: var(--details-color);
+    color: var(--light-color);
+}
+
+.btn-edit {
+    background-color: var(--admin-edit-color);
+    color: var(--text-color);
+}
+
+.btn-delete {
+    background-color: var(--error-color);
+    color: var(--light-color);
+}
+
+.btn-details:hover {
+    background-color: #00a0c0;
+}
+
+.btn-edit:hover {
+    background-color: #e6c800;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.inline-form {
+    display: inline;
+    margin: 0;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 992px) {
+    .main-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-header h1 {
+        font-size: 20px;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+        padding: 8px 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .table-responsive {
+        position: relative;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .users-table {
+        min-width: 800px; /* Забезпечує горизонтальну прокрутку для маленьких екранів */
+    }
+
+    .panel-header {
+        padding: 15px;
+    }
+
+    .panel-header h1 {
+        font-size: 18px;
+    }
+}

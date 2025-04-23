@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator - Реєстрація</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+<!-- Підключення хедера -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- Main content -->
+<main class="main-content">
+    <div class="registration-container">
+        <div class="registration-header">
+            <h1>Реєстрація нового користувача</h1>
+        </div>
+        <div class="registration-form">
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Ім'я</label>
+                        <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Прізвище</label>
+                        <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" th:field="*{password}" required>
+                    <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                    <div class="form-hint">Пароль повинен містити не менше 6 символів</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Номер телефону</label>
+                    <input type="tel" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" required>
+                    <div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+                    <div class="form-hint">Формат: +380XXXXXXXXX або 0XXXXXXXXX</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Дата народження</label>
+                    <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}" required>
+                    <div class="text-danger" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></div>
+                    <div class="form-hint">DD.MM.YYYY</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-register">Зареєструватися</button>
+                </div>
+
+                <div class="login-link">
+                    <p>Вже маєте обліковий запис? <a href="/login">Увійти</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<!-- Підключення футера -->
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>
