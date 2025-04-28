@@ -1,0 +1,311 @@
+/* Основні стилі */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body[data-font="Arial"] { font-family: 'Arial', sans-serif; }
+body[data-font="Times New Roman"] { font-family: 'Times New Roman', serif; }
+body[data-font="Calibri"] { font-family: 'Calibri', sans-serif; }
+body[data-font="Verdana"] { font-family: 'Verdana', sans-serif; }
+body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
+
+/* Контейнери */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cv-container {
+    display: flex;
+    gap: 30px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Лівий сайдбар */
+.cv-sidebar {
+    width: 350px;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Фото секція */
+.photo-section {
+    margin-bottom: 30px;
+}
+
+.photo-container,
+.photo-placeholder {
+    width: 100%;
+    height: 280px;
+    background-color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #000000;
+    font-size: 24px;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Шапка з ім'ям */
+.header-section {
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.surname {
+    display: block;
+}
+
+/* Загальні стилі для заголовків секцій */
+.section-heading,
+.main-section-heading {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    border-bottom: 1px solid #404040;
+    padding-bottom: 10px;
+}
+
+/* Контактна інформація */
+.contact-section {
+    margin-bottom: 30px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    background-color: #6366f1;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    word-break: break-all;
+}
+
+.contact-icon {
+    display: none; /* Приховуємо іконки для цього стилю */
+}
+
+.contact-text {
+    color: #ffffff;
+}
+
+.contact-text a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Скіли */
+.skills-section,
+.education-section,
+.languages-section,
+.courses-section,
+.hobbies-section {
+    margin-bottom: 30px;
+}
+
+.skill-item,
+.education-item {
+    margin-bottom: 10px;
+}
+
+.skill-name,
+.degree-title {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* Правий основний блок */
+.cv-main {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Текстові секції */
+.about-section,
+.experience-section,
+.portfolio-section {
+    margin-bottom: 40px;
+}
+
+.about-text {
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+/* Досвід роботи */
+.experience-item {
+    margin-bottom: 20px;
+}
+
+.job-position {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Списки */
+.standard-list,
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.standard-list li,
+.link-list li {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.link-list a {
+    color: #6366f1;
+    text-decoration: none;
+}
+
+.link-list a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопки дій */
+.actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #6366f1;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #4f46e5;
+}
+
+.btn-success {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #059669;
+}
+
+.btn-secondary {
+    background-color: #404040;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: #505050;
+}
+
+/* Стилі для друку */
+@media print {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .cv-container {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .cv-sidebar {
+        background-color: #f3f4f6;
+        border: 1px solid #e5e7eb;
+    }
+
+    .contact-item {
+        background-color: #f3f4f6;
+        color: #000000;
+        border: 1px solid #6366f1;
+    }
+
+    .contact-text,
+    .contact-text a,
+    .skill-name,
+    .degree-title,
+    .about-text,
+    .job-position,
+    .standard-list li,
+    .link-list li {
+        color: #000000;
+    }
+
+    .section-heading,
+    .main-section-heading {
+        color: #000000;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .actions {
+        display: none;
+    }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .cv-container {
+        flex-direction: column;
+    }
+
+    .cv-sidebar {
+        width: 100%;
+    }
+
+    .cv-main {
+        padding: 20px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
