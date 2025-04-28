@@ -16,6 +16,7 @@ public class StartPageController {
         return "login";
     }
 
+
     @GetMapping("/help")
     public String help() {
         return "help";
