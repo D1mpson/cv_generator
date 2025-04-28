@@ -1,14 +1,12 @@
 package com.example.cvgenerator.service;
 
 import com.example.cvgenerator.model.CV;
-import com.example.cvgenerator.model.Template;
 import com.example.cvgenerator.model.User;
 import com.example.cvgenerator.repository.CVRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,7 +27,6 @@ public class CVService {
         this.cvRepository = cvRepository;
         this.userService = userService;
 
-        // Створення директорії для зберігання фото, якщо її ще немає
         try {
             Path uploadPath = Paths.get(UPLOAD_DIR);
             if (!Files.exists(uploadPath)) {
@@ -78,7 +75,7 @@ public class CVService {
         return cvRepository.findById(id);
     }
 
-    public CV updateCV(CV cv, MultipartFile photoFile) throws IOException {
+    public void updateCV(CV cv, MultipartFile photoFile) throws IOException {
         CV existingCV = cvRepository.findById(cv.getId())
                 .orElseThrow(() -> new RuntimeException("CV з ID " + cv.getId() + " не знайдено"));
 
@@ -88,12 +85,10 @@ public class CVService {
             throw new RuntimeException("У вас немає прав для редагування цього CV");
         }
 
-        // Оновлення полів
         existingCV.setName(cv.getName());
         existingCV.setAboutMe(cv.getAboutMe());
         existingCV.setHobbies(cv.getHobbies());
 
-        // Оновлення додаткових полів
         existingCV.setSoftSkills(cv.getSoftSkills());
         existingCV.setHardSkills(cv.getHardSkills());
         existingCV.setOtherLanguages(cv.getOtherLanguages());
@@ -101,7 +96,6 @@ public class CVService {
         existingCV.setCourses(cv.getCourses());
         existingCV.setWorkExperience(cv.getWorkExperience());
 
-        // Оновлення колекцій
         if (cv.getPortfolioLinks() != null) {
             existingCV.setPortfolioLinks(cv.getPortfolioLinks());
         }
@@ -126,33 +120,30 @@ public class CVService {
                 Files.deleteIfExists(oldPath);
             }
 
-            // Збереження нового фото
             String fileName = UUID.randomUUID().toString() + "_" + photoFile.getOriginalFilename();
             Path filePath = Paths.get(UPLOAD_DIR + fileName);
             Files.write(filePath, photoFile.getBytes());
             existingCV.setPhotoPath(fileName);
         }
 
-        return cvRepository.save(existingCV);
+        cvRepository.save(existingCV);
     }
 
     public void deleteCV(Long id) {
         CV cv = cvRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("CV з ID " + id + " не знайдено"));
 
-        // Перевірка чи CV належить поточному користувачу
         User currentUser = userService.getCurrentUser();
-        if (!cv.getUser().getId().equals(currentUser.getId())) {
+        if (!cv.getUser().getId().equals(currentUser.getId()) &&
+                !currentUser.getRole().equals("ROLE_ADMIN")) {
             throw new RuntimeException("У вас немає прав для видалення цього CV");
         }
 
-        // Видалення фото, якщо воно існує
         if (cv.getPhotoPath() != null && !cv.getPhotoPath().isEmpty()) {
             try {
                 Path photoPath = Paths.get(UPLOAD_DIR + cv.getPhotoPath());
                 Files.deleteIfExists(photoPath);
             } catch (IOException e) {
-                // Логування помилки
                 System.err.println("Не вдалося видалити фото: " + e.getMessage());
             }
         }

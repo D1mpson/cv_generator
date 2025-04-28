@@ -2,15 +2,15 @@ package com.example.cvgenerator.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -41,7 +41,11 @@ public class User {
 
     @NotNull(message = "Дата народження є обовʼязковою")
     @Past(message = "Дата народження повинна бути в минулому")
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate birthDate;
+
+    @NotNull(message = "Місто є обовʼязковим")
+    private String cityLife;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<CV> cvList = new ArrayList<>();
