@@ -23,8 +23,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/register", "/login", "/help", "/css/**", "/js/**", "/images/**", "/error").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Додайте цей рядок
+                        .requestMatchers("/", "/register", "/login", "/help", "/css/**", "/js/**", "/images/**", "/uploads/**", "/error").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
