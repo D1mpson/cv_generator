@@ -1,5 +1,5 @@
 /* profile.css */
-@import 'variables.css';
+@import '../other-page/variables.css';
 
 .main-content {
     max-width: var(--container-max-width);
@@ -187,7 +187,7 @@
 }
 
 .cv-info {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
     flex-grow: 1;
     word-break: break-word;
 }
@@ -236,7 +236,16 @@
     max-width: 200px;
     margin: 0 auto;
 }
-
+.help-create-cv {
+    padding: 5px 30px;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    text-align: center;
+    border: solid;
+    border-color: #e0e0e0;
+    margin: 20px;
+    margin-inline: auto;
+}
 /* Медіа запити для адаптивності */
 @media (max-width: 992px) {
     .profile-container {

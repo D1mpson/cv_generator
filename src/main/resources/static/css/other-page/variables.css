@@ -73,10 +73,38 @@ body {
 /* Універсальні стилі для кнопок */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border-radius: var(--border-radius-rounded);
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.2s, transform 0.1s;
+    box-sizing: border-box;
+}
+
+.btn-profile {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: var(--border-radius-rounded);
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.2s, transform 0.1s;
+    box-sizing: border-box;
+}
+
+.btn-admin {
+    display: inline-block;
+    padding: 10px 10px;
+    border-radius: var(--border-radius-rounded);
+    font-weight: 500;
+    font-size: 15px;
     text-align: center;
     cursor: pointer;
     text-decoration: none;

@@ -1,5 +1,5 @@
 /* welcome-page.css */
-@import 'variables.css';
+@import 'other-page/variables.css';
 
 .main-content {
     flex: 1;
@@ -27,7 +27,8 @@ h1 {
     color: var(--secondary-text);
     margin-bottom: 30px;
     line-height: 1.6;
-    max-width: 100%;
+    max-width: 50%;
+    text-align: justify;
 }
 
 .advantages {

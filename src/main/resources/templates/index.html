@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Generator - Головна</title>
-    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <title th:text="#{app.name}">CV Generator - Головна</title>
+    <link rel="stylesheet" th:href="@{/css/other-page/header.css}">
     <link rel="stylesheet" th:href="@{/css/welcome-page.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/other-page/footer.css}">
 </head>
 <body>
 <!-- Підключення хедера -->
@@ -14,32 +14,30 @@
 
 <!-- Main content -->
 <main class="main-content">
-    <h1>Ласкаво просимо до<br>CV Generator</h1>
-    <p class="subtitle">Створіть професійне резюме для вашого успіху на ринку праці.</p>
-    <p class="description">
-        CV Generator — це зручний інструмент для створення якісних резюме<br>
-        за кілька хвилин. Оберіть шаблон, заповніть інформацію та отримайте<br>
-        професійно оформлене CV.
+    <h1 th:text="#{app.welcome}">Ласкаво просимо до CV Generator</h1>
+    <p class="subtitle" th:text="#{app.description}">Створіть професійне резюме для вашого успіху на ринку праці.</p>
+    <p class="description" th:text="#{message.startPage}">
+        CV Generator — це зручний інструмент для створення якісних резюме за кілька хвилин. Оберіть шаблон, заповніть інформацію та отримайте професійно оформлене CV.
     </p>
 
     <div class="advantages">
-        <h2>Наші переваги:</h2>
+        <h2 th:text="#{app.advantages}">Наші переваги:</h2>
         <ul>
-            <li>Зручний інтерфейс</li>
-            <li>Різноманітні шаблони</li>
-            <li>Швидке створення</li>
-            <li>Підтримка української та англійської мов</li>
+            <li th:text="#{app.advantage1}">Зручний інтерфейс</li>
+            <li th:text="#{app.advantage2}">Різноманітні шаблони</li>
+            <li th:text="#{app.advantage3}">Швидке створення</li>
+            <li th:text="#{app.advantage4}">Підтримка української та англійської мов</li>
         </ul>
     </div>
 
     <!-- Кнопки для неавторизованого користувача -->
     <div sec:authorize="!isAuthenticated()" class="action-buttons">
-        <a href="/login" class="btn btn-primary">Увійти</a>
-        <a href="/register" class="btn btn-secondary">Зареєструватися</a>
+        <a href="/login" class="btn btn-primary" th:text="#{nav.login}">Увійти</a>
+        <a href="/register" class="btn btn-secondary" th:text="#{nav.register}">Зареєструватися</a>
     </div>
     <!-- Кнопка для авторизованого користувача -->
     <div sec:authorize="isAuthenticated()" class="action-buttons">
-        <a href="/generator" class="btn btn-primary">Створити своє CV</a>
+        <a href="/generator" class="btn btn-primary" th:text="#{nav.create}">Створити своє CV</a>
     </div>
 </main>
 

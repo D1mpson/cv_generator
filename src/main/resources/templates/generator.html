@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Generator - Створення CV</title>
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/generator.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/other-page/header.css}">
+    <link rel="stylesheet" th:href="@{/css/user/generator.css}">
+    <link rel="stylesheet" th:href="@{/css/other-page/footer.css}">
 </head>
 <body>
 <!-- Підключення хедера -->
@@ -71,14 +71,16 @@
                     </div>
                 </div>
 
+                <!-- Секція для фото -->
                 <div class="form-group">
                     <label>Ваше фото</label>
-                    <div class="file-upload">
-                        <label for="photo" class="file-upload-label">Виберіть файл</label>
-                        <input type="file" id="photo" name="photo" accept="image/*" class="file-upload-input">
-                        <span class="file-name">Файл не обрано</span>
+                    <div class="file-upload" style="margin-top: 10px; margin-bottom: 10px;">
+                        <label for="photo" class="file-upload-label" style="padding: 10px 225px; background-color: #f0f0f0; border-radius: 4px; cursor: pointer; display: inline-block;">Виберіть файл</label>
+                        <input type="file" id="photo" name="photo" accept="image/*" style="display: none;">
                     </div>
                     <p class="form-hint">Рекомендований розмір фото: 3:4, формат: JPG, PNG, максимальний розмір: 10МБ</p>
+                    <p class="form-hint">Якщо ви обрали файл, він обовʼязково завантажиться.</p>
+
                 </div>
             </div>
 
@@ -109,15 +111,15 @@
                     <div class="skills-column">
                         <h4>Софт скіли</h4>
                         <div class="skills-inputs">
-                            <input type="text" name="softSkillsItems[]" placeholder="Навичка (наприклад: комунікабельність)"
+                            <input type="text" name="softSkillsItems" placeholder="Навичка (наприклад: комунікабельність)"
                                    th:value="${cv.softSkills != null && !cv.softSkills.isEmpty() ? #strings.arraySplit(cv.softSkills, ',')[0] : ''}">
-                            <input type="text" name="softSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="softSkillsItems" placeholder="Навичка"
                                    th:value="${cv.softSkills != null && #strings.arraySplit(cv.softSkills, ',').length > 1 ? #strings.arraySplit(cv.softSkills, ',')[1] : ''}">
-                            <input type="text" name="softSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="softSkillsItems" placeholder="Навичка"
                                    th:value="${cv.softSkills != null && #strings.arraySplit(cv.softSkills, ',').length > 2 ? #strings.arraySplit(cv.softSkills, ',')[2] : ''}">
-                            <input type="text" name="softSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="softSkillsItems" placeholder="Навичка"
                                    th:value="${cv.softSkills != null && #strings.arraySplit(cv.softSkills, ',').length > 3 ? #strings.arraySplit(cv.softSkills, ',')[3] : ''}">
-                            <input type="text" name="softSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="softSkillsItems" placeholder="Навичка"
                                    th:value="${cv.softSkills != null && #strings.arraySplit(cv.softSkills, ',').length > 4 ? #strings.arraySplit(cv.softSkills, ',')[4] : ''}">
                         </div>
                     </div>
@@ -125,15 +127,15 @@
                     <div class="skills-column">
                         <h4>Хард скіли</h4>
                         <div class="skills-inputs">
-                            <input type="text" name="hardSkillsItems[]" placeholder="Навичка (наприклад: HTML/CSS)"
+                            <input type="text" name="hardSkillsItems" placeholder="Навичка (наприклад: HTML/CSS)"
                                    th:value="${cv.hardSkills != null && !cv.hardSkills.isEmpty() ? #strings.arraySplit(cv.hardSkills, ',')[0] : ''}">
-                            <input type="text" name="hardSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="hardSkillsItems" placeholder="Навичка"
                                    th:value="${cv.hardSkills != null && #strings.arraySplit(cv.hardSkills, ',').length > 1 ? #strings.arraySplit(cv.hardSkills, ',')[1] : ''}">
-                            <input type="text" name="hardSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="hardSkillsItems" placeholder="Навичка"
                                    th:value="${cv.hardSkills != null && #strings.arraySplit(cv.hardSkills, ',').length > 2 ? #strings.arraySplit(cv.hardSkills, ',')[2] : ''}">
-                            <input type="text" name="hardSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="hardSkillsItems" placeholder="Навичка"
                                    th:value="${cv.hardSkills != null && #strings.arraySplit(cv.hardSkills, ',').length > 3 ? #strings.arraySplit(cv.hardSkills, ',')[3] : ''}">
-                            <input type="text" name="hardSkillsItems[]" placeholder="Навичка"
+                            <input type="text" name="hardSkillsItems" placeholder="Навичка"
                                    th:value="${cv.hardSkills != null && #strings.arraySplit(cv.hardSkills, ',').length > 4 ? #strings.arraySplit(cv.hardSkills, ',')[4] : ''}">
                         </div>
                     </div>
@@ -147,32 +149,32 @@
                     <h4>Мови, якими ви володієте</h4>
                     <div class="languages-checkboxes">
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Українська" id="langUkrainian"
+                            <input type="checkbox" name="knownLanguages" value="Українська" id="langUkrainian"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Українська')}">
                             <label for="langUkrainian">Українська</label>
                         </div>
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Англійська" id="langEnglish"
+                            <input type="checkbox" name="knownLanguages" value="Англійська" id="langEnglish"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Англійська')}">
                             <label for="langEnglish">Англійська</label>
                         </div>
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Німецька" id="langGerman"
+                            <input type="checkbox" name="knownLanguages" value="Німецька" id="langGerman"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Німецька')}">
                             <label for="langGerman">Німецька</label>
                         </div>
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Французька" id="langFrench"
+                            <input type="checkbox" name="knownLanguages" value="Французька" id="langFrench"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Французька')}">
                             <label for="langFrench">Французька</label>
                         </div>
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Іспанська" id="langSpanish"
+                            <input type="checkbox" name="knownLanguages" value="Іспанська" id="langSpanish"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Іспанська')}">
                             <label for="langSpanish">Іспанська</label>
                         </div>
                         <div class="language-checkbox">
-                            <input type="radio" name="knownLanguages" value="Польська" id="langPolish"
+                            <input type="checkbox" name="knownLanguages" value="Польська" id="langPolish"
                                    th:checked="${cv.knownLanguages != null && cv.knownLanguages.contains('Польська')}">
                             <label for="langPolish">Польська</label>
                         </div>
@@ -193,15 +195,15 @@
                     <div class="education-column">
                         <h4>Освіта</h4>
                         <div class="education-inputs">
-                            <input type="text" name="educationItems[]" placeholder="Навчальний заклад, спеціальність, період навчання"
+                            <input type="text" name="educationItems" placeholder="Навчальний заклад, спеціальність, період навчання"
                                    th:value="${cv.education != null && !cv.education.isEmpty() ? #strings.arraySplit(cv.education, ',')[0] : ''}">
-                            <input type="text" name="educationItems[]" placeholder="Навчальний заклад, спеціальність, період навчання"
+                            <input type="text" name="educationItems" placeholder="Навчальний заклад, спеціальність, період навчання"
                                    th:value="${cv.education != null && #strings.arraySplit(cv.education, ',').length > 1 ? #strings.arraySplit(cv.education, ',')[1] : ''}">
-                            <input type="text" name="educationItems[]" placeholder="Навчальний заклад, спеціальність, період навчання"
+                            <input type="text" name="educationItems" placeholder="Навчальний заклад, спеціальність, період навчання"
                                    th:value="${cv.education != null && #strings.arraySplit(cv.education, ',').length > 2 ? #strings.arraySplit(cv.education, ',')[2] : ''}">
-                            <input type="text" name="educationItems[]" placeholder="Навчальний заклад, спеціальність, період навчання"
+                            <input type="text" name="educationItems" placeholder="Навчальний заклад, спеціальність, період навчання"
                                    th:value="${cv.education != null && #strings.arraySplit(cv.education, ',').length > 3 ? #strings.arraySplit(cv.education, ',')[3] : ''}">
-                            <input type="text" name="educationItems[]" placeholder="Навчальний заклад, спеціальність, період навчання"
+                            <input type="text" name="educationItems" placeholder="Навчальний заклад, спеціальність, період навчання"
                                    th:value="${cv.education != null && #strings.arraySplit(cv.education, ',').length > 4 ? #strings.arraySplit(cv.education, ',')[4] : ''}">
                         </div>
                     </div>
@@ -209,15 +211,15 @@
                     <div class="education-column">
                         <h4>Курси та сертифікати</h4>
                         <div class="courses-inputs">
-                            <input type="text" name="coursesItems[]" placeholder="Назва курсу, організація, дата закінчення"
+                            <input type="text" name="coursesItems" placeholder="Назва курсу, організація, дата закінчення"
                                    th:value="${cv.courses != null && !cv.courses.isEmpty() ? #strings.arraySplit(cv.courses, ',')[0] : ''}">
-                            <input type="text" name="coursesItems[]" placeholder="Назва курсу, організація, дата закінчення"
+                            <input type="text" name="coursesItems" placeholder="Назва курсу, організація, дата закінчення"
                                    th:value="${cv.courses != null && #strings.arraySplit(cv.courses, ',').length > 1 ? #strings.arraySplit(cv.courses, ',')[1] : ''}">
-                            <input type="text" name="coursesItems[]" placeholder="Назва курсу, організація, дата закінчення"
+                            <input type="text" name="coursesItems" placeholder="Назва курсу, організація, дата закінчення"
                                    th:value="${cv.courses != null && #strings.arraySplit(cv.courses, ',').length > 2 ? #strings.arraySplit(cv.courses, ',')[2] : ''}">
-                            <input type="text" name="coursesItems[]" placeholder="Назва курсу, організація, дата закінчення"
+                            <input type="text" name="coursesItems" placeholder="Назва курсу, організація, дата закінчення"
                                    th:value="${cv.courses != null && #strings.arraySplit(cv.courses, ',').length > 3 ? #strings.arraySplit(cv.courses, ',')[3] : ''}">
-                            <input type="text" name="coursesItems[]" placeholder="Назва курсу, організація, дата закінчення"
+                            <input type="text" name="coursesItems" placeholder="Назва курсу, організація, дата закінчення"
                                    th:value="${cv.courses != null && #strings.arraySplit(cv.courses, ',').length > 4 ? #strings.arraySplit(cv.courses, ',')[4] : ''}">
                         </div>
                     </div>
@@ -230,15 +232,15 @@
                 <div class="experience-container">
                     <h4>Досвід роботи</h4>
                     <div class="experience-inputs">
-                        <input type="text" name="workExperienceItems[]" placeholder="Компанія, посада, період роботи"
+                        <input type="text" name="workExperienceItems" placeholder="Компанія, посада, період роботи"
                                th:value="${cv.workExperience != null && !cv.workExperience.isEmpty() ? #strings.arraySplit(cv.workExperience, ',')[0] : ''}">
-                        <input type="text" name="workExperienceItems[]" placeholder="Компанія, посада, період роботи"
+                        <input type="text" name="workExperienceItems" placeholder="Компанія, посада, період роботи"
                                th:value="${cv.workExperience != null && #strings.arraySplit(cv.workExperience, ',').length > 1 ? #strings.arraySplit(cv.workExperience, ',')[1] : ''}">
-                        <input type="text" name="workExperienceItems[]" placeholder="Компанія, посада, період роботи"
+                        <input type="text" name="workExperienceItems" placeholder="Компанія, посада, період роботи"
                                th:value="${cv.workExperience != null && #strings.arraySplit(cv.workExperience, ',').length > 2 ? #strings.arraySplit(cv.workExperience, ',')[2] : ''}">
-                        <input type="text" name="workExperienceItems[]" placeholder="Компанія, посада, період роботи"
+                        <input type="text" name="workExperienceItems" placeholder="Компанія, посада, період роботи"
                                th:value="${cv.workExperience != null && #strings.arraySplit(cv.workExperience, ',').length > 3 ? #strings.arraySplit(cv.workExperience, ',')[3] : ''}">
-                        <input type="text" name="workExperienceItems[]" placeholder="Компанія, посада, період роботи"
+                        <input type="text" name="workExperienceItems" placeholder="Компанія, посада, період роботи"
                                th:value="${cv.workExperience != null && #strings.arraySplit(cv.workExperience, ',').length > 4 ? #strings.arraySplit(cv.workExperience, ',')[4] : ''}">
                     </div>
                 </div>
@@ -251,15 +253,15 @@
                     <h4>Посилання на ваші роботи</h4>
                     <p class="portfolio-hint">Додайте посилання на ваші проекти, профілі, портфоліо тощо.</p>
                     <div class="portfolio-inputs">
-                        <input type="text" name="portfolioLinks[]" placeholder="https://example.com/my-project"
+                        <input type="text" name="portfolioLinks" placeholder="https://example.com/my-project"
                                th:value="${cv.portfolioLinks != null && cv.portfolioLinks.size() > 0 ? cv.portfolioLinks[0] : ''}">
-                        <input type="text" name="portfolioLinks[]" placeholder="https://github.com/username"
+                        <input type="text" name="portfolioLinks" placeholder="https://github.com/username"
                                th:value="${cv.portfolioLinks != null && cv.portfolioLinks.size() > 1 ? cv.portfolioLinks[1] : ''}">
-                        <input type="text" name="portfolioLinks[]" placeholder="https://linkedin.com/in/username"
+                        <input type="text" name="portfolioLinks" placeholder="https://linkedin.com/in/username"
                                th:value="${cv.portfolioLinks != null && cv.portfolioLinks.size() > 2 ? cv.portfolioLinks[2] : ''}">
-                        <input type="text" name="portfolioLinks[]" placeholder="https://behance.net/username"
+                        <input type="text" name="portfolioLinks" placeholder="https://behance.net/username"
                                th:value="${cv.portfolioLinks != null && cv.portfolioLinks.size() > 3 ? cv.portfolioLinks[3] : ''}">
-                        <input type="text" name="portfolioLinks[]" placeholder="Інше посилання..."
+                        <input type="text" name="portfolioLinks" placeholder="Інше посилання..."
                                th:value="${cv.portfolioLinks != null && cv.portfolioLinks.size() > 4 ? cv.portfolioLinks[4] : ''}">
                     </div>
                 </div>

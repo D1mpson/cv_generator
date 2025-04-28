@@ -1,5 +1,5 @@
 /* all-cv.css */
-@import 'variables.css';
+@import '../other-page/variables.css';
 
 .main-content {
     flex: 1;

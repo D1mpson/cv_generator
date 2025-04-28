@@ -26,7 +26,6 @@ body {
     flex-shrink: 0; /* Не дозволяє стискатись */
     background-color: #fff;
     border-top: 1px solid #f0f0f0;
-    padding: 40px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -48,12 +47,12 @@ body {
 }
 
 .logo-image-footer {
-    height: 60px;
+    height: 100px;
     margin-bottom: 15px;
 }
 
 .footer-tagline {
-    color: #777;
+    color: #333333;
     font-size: 14px;
 }
 

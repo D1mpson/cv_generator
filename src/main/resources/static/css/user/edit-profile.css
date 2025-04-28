@@ -1,5 +1,5 @@
-/* edit-user.css */
-@import 'variables.css';
+/* edit-profile.css */
+@import '../other-page/variables.css';
 
 .main-content {
     display: flex;
@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-.edit-user-container {
+.edit-profile-container {
     width: 100%;
     max-width: 800px;
     background: var(--light-color);
@@ -48,6 +48,10 @@ form {
     box-sizing: border-box;
 }
 
+.form-row .form-group {
+    width: 100%;
+}
+
 .form-group {
     margin-bottom: var(--section-gap);
     width: 100%;
@@ -59,12 +63,6 @@ form {
     margin-bottom: 8px;
     font-weight: 500;
     color: var(--text-color);
-}
-
-.note {
-    color: var(--error-color);
-    font-weight: normal;
-    font-size: 14px;
 }
 
 .form-control {
@@ -88,53 +86,10 @@ form {
     outline: none;
 }
 
-.form-control:read-only {
-    background-color: var(--secondary-bg);
-    cursor: not-allowed;
-}
-
-.error-message {
-    color: var(--error-color);
-    font-size: 14px;
+.form-hint {
+    font-size: 12px;
+    color: var(--hint-text);
     margin-top: 5px;
-}
-
-/* Стилі для вибору ролі */
-.role-group {
-    margin-top: var(--section-gap);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.role-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 8px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.role-option {
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-bg);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.role-option input[type="radio"] {
-    margin: 0 10px 0 0;
-    width: 18px;
-    height: 18px;
-}
-
-.role-option label {
-    margin-bottom: 0;
-    cursor: pointer;
 }
 
 .form-actions {
@@ -183,7 +138,7 @@ form {
         padding: 30px var(--container-padding);
     }
 
-    .edit-user-container {
+    .edit-profile-container {
         max-width: 700px;
     }
 }
@@ -199,12 +154,7 @@ form {
 
     .form-row {
         grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .role-options {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 15px;
     }
 
     .form-actions {
@@ -228,7 +178,7 @@ form {
         padding: 15px 10px;
     }
 
-    .edit-user-container {
+    .edit-profile-container {
         border-radius: 5px;
     }
 
@@ -252,9 +202,5 @@ form {
     .btn {
         padding: 8px 15px;
         font-size: 13px;
-    }
-
-    .role-option {
-        padding: 8px;
     }
 }

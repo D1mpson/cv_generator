@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Generator - Редагування профілю</title>
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/edit-profile.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/other-page/header.css}">
+    <link rel="stylesheet" th:href="@{/css/user/edit-profile.css}">
+    <link rel="stylesheet" th:href="@{/css/other-page/footer.css}">
 </head>
 <body>
 <!-- Підключення хедера -->
@@ -59,6 +59,13 @@
                 <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control"
                        th:value="${user.phoneNumber != null ? user.phoneNumber : ''}"
                        placeholder="Формат: +380XXXXXXXXX або 0XXXXXXXXX">
+            </div>
+
+            <div class="form-group">
+                <label for="cityLife">Місто</label>
+                <input type="tel" id="cityLife" name="cityLife" class="form-control"
+                       th:value="${user.cityLife != null ? user.cityLife : ''}"
+                       placeholder="City">
             </div>
 
             <!-- Поле дати народження -->

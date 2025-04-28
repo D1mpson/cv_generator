@@ -1,0 +1,331 @@
+/* Основні стилі */
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body[data-font="Arial"] { font-family: 'Arial', sans-serif; }
+body[data-font="Times New Roman"] { font-family: 'Times New Roman', serif; }
+body[data-font="Calibri"] { font-family: 'Calibri', sans-serif; }
+body[data-font="Verdana"] { font-family: 'Verdana', sans-serif; }
+body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
+
+/* Контейнери */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.cv-container {
+    display: flex;
+    gap: 40px;
+    background-color: #ffffff;
+    color: #333333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* Лівий сайдбар */
+.cv-sidebar {
+    width: 300px;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+/* Фото секція */
+.photo-section {
+    margin-bottom: 30px;
+}
+
+.photo-container,
+.photo-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #6c757d;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Шапка з ім'ям */
+.header-section {
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: #212529;
+}
+
+.surname {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Загальні стилі для заголовків секцій */
+.section-heading,
+.main-section-heading {
+    color: #212529;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: 0;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Контактна інформація */
+.contact-section {
+    margin-bottom: 30px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon i {
+    font-size: 16px;
+}
+
+.contact-text {
+    color: #495057;
+    font-size: 14px;
+}
+
+.contact-text a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.contact-text a:hover {
+    text-decoration: underline;
+}
+
+/* Скіли */
+.skills-section,
+.education-section,
+.languages-section,
+.courses-section,
+.hobbies-section {
+    margin-bottom: 30px;
+}
+
+.skill-item,
+.education-item {
+    margin-bottom: 10px;
+}
+
+.skill-name,
+.degree-title {
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Правий основний блок */
+.cv-main {
+    flex: 1;
+}
+
+/* Текстові секції */
+.about-section,
+.experience-section,
+.portfolio-section {
+    margin-bottom: 35px;
+}
+
+.about-text {
+    line-height: 1.7;
+    color: #495057;
+    font-size: 15px;
+}
+
+/* Досвід роботи */
+.experience-item {
+    margin-bottom: 25px;
+}
+
+.job-position {
+    font-weight: 600;
+    color: #212529;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* Списки */
+.standard-list,
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.standard-list li,
+.link-list li {
+    margin-bottom: 10px;
+    color: #495057;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.link-list li {
+    margin-bottom: 8px;
+}
+
+.link-list a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.link-list a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопки дій */
+.actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: #ffffff;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-success {
+    background-color: #198754;
+    color: #ffffff;
+    border-color: #198754;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+}
+
+/* Стилі для друку */
+@media print {
+    body {
+        background-color: #ffffff;
+    }
+
+    .cv-container {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .cv-sidebar {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .actions {
+        display: none;
+    }
+
+    .contact-icon i {
+        color: #000000;
+    }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .cv-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .cv-sidebar {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .cv-main {
+        padding: 0;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .name {
+        font-size: 28px;
+    }
+}
