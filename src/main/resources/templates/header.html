@@ -50,8 +50,12 @@
         </a>
     </div>
 
+
     <!-- Кнопки для авторизованого користувача -->
     <div class="auth-buttons" sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn-logout" th:text="#{nav.logout}">Вийти</button>
+        </form>
         <div class="language-switcher">
             <a th:href="@{''(lang=uk)}" class="lang-link" th:classappend="${#locale.toString() == 'uk' ? 'active' : ''}">
                 <span th:text="#{language.uk}">UA</span>

@@ -34,6 +34,11 @@
                 </div>
 
                 <div class="detail-item">
+                    <span th:text="#{register.cityLife} + ': '">Місто: </span>
+                    <span th:text="${user.cityLife}">+Місто</span>
+                </div>
+
+                <div class="detail-item">
                     <span th:text="#{register.birthDate} + ': '">Дата народження: </span>
                     <span th:text="${#temporals.format(user.birthDate, 'dd.MM.yyyy')}">DD.MM.YYYY</span>
                 </div>

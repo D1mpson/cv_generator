@@ -30,6 +30,8 @@
 
                 <p class="user-phone">Телефон: <span th:text="${user.phoneNumber}">+380XXXXXXXXX</span></p>
 
+                <p class="user-phone">Телефон: <span th:text="${user.cityLife}">City</span></p>
+
                 <p class="user-birth">Дата народження: <span th:text="${#temporals.format(user.birthDate, 'dd.MM.yyyy')}">DD.MM.YYYY</span></p>
 
                 <div class="user-actions">
