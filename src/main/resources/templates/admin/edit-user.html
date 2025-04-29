@@ -19,7 +19,7 @@
             <h1>Редагування користувача</h1>
         </div>
 
-        <form th:action="@{/admin/users/{id}/edit(id=${user.id})}" th:object="${user}" method="post">
+        <form th:action="@{/admin/users/{id}/edit(id=${user.id})}" th:object="${user}" method="post" class="edit-profile-form">
             <div class="form-row">
                 <div class="form-group">
                     <label for="firstName">Ім'я</label>

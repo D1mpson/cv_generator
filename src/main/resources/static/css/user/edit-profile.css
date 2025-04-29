@@ -33,7 +33,7 @@
     font-weight: 500;
 }
 
-form {
+.edit-profile-form {
     padding: var(--form-padding);
     width: 100%;
     box-sizing: border-box;
