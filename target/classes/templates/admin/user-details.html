@@ -30,8 +30,6 @@
 
                 <p class="user-phone">Телефон: <span th:text="${user.phoneNumber}">+380XXXXXXXXX</span></p>
 
-                <p class="user-phone">Телефон: <span th:text="${user.cityLife}">City</span></p>
-
                 <p class="user-birth">Дата народження: <span th:text="${#temporals.format(user.birthDate, 'dd.MM.yyyy')}">DD.MM.YYYY</span></p>
 
                 <div class="user-actions">
@@ -48,7 +46,7 @@
         <div class="user-cv-block">
             <div class="block-header">
                 <h2>Резюме користувача</h2>
-                <a th:href="@{/admin}" class="btn btn-back">Назад до списку користувачів</a>
+                <a th:href="@{/admin}" class="btn-go-back">Назад до списку користувачів</a>
             </div>
 
             <div class="block-content">

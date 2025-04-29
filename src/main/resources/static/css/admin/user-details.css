@@ -40,7 +40,7 @@
 .block-header {
     background: var(--dark-color);
     color: var(--light-color);
-    padding: 15px 20px;
+    padding: 20px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,18 +133,20 @@
     flex-shrink: 0;
 }
 
-.btn {
-    padding: 10px 15px;
+.btn-go-back {
+    display: inline-block;
+    color: #000000;
+    padding: 5px 25px;
+    border-radius: var(--border-radius-rounded);
+    font-weight: 500;
+    font-size: 15px;
     text-align: center;
-    text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
     border: none;
-    display: block;
-    width: 100%;
-    border-radius: var(--border-radius);
-    font-size: 14px;
+    transition: background-color 0.2s, transform 0.1s;
     box-sizing: border-box;
-    margin: 0;
+    background-color: #e0e0e0;
 }
 
 .btn-delete,
