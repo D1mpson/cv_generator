@@ -15,6 +15,7 @@
 <!-- Main content -->
 <main class="main-content">
     <div class="page-container">
+
         <!-- Лівий блок -->
         <div class="user-info-block">
             <div class="block-header">
@@ -38,15 +39,16 @@
                         <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
                         <button type="submit" class="btn btn-delete" onclick="return confirm('Ви впевнені, що хочете видалити цього користувача?');">Видалити</button>
                     </form>
+                    <a th:href="@{/admin}" class="btn btn-view">Назад до списку</a>
                 </div>
             </div>
         </div>
+
 
         <!-- Правий блок -->
         <div class="user-cv-block">
             <div class="block-header">
                 <h2>Резюме користувача</h2>
-                <a th:href="@{/admin}" class="btn-go-back">Назад до списку користувачів</a>
             </div>
 
             <div class="block-content">
