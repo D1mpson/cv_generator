@@ -45,19 +45,21 @@ public class CVController {
     }
 
     @PostMapping("/generator")
-    public String createCV(@Valid @ModelAttribute("cv") CV cv,
-                           BindingResult result,
-                           @RequestParam("templateId") Long templateId,
-                           @RequestParam("photo") MultipartFile photo,
-                           @RequestParam(value = "portfolioLinks", required = false) List<String> portfolioLinks,
-                           @RequestParam(value = "knownLanguages", required = false) List<String> knownLanguages,
-                           @RequestParam(value = "educationItems", required = false) List<String> educationItems,
-                           @RequestParam(value = "coursesItems", required = false) List<String> coursesItems,
-                           @RequestParam(value = "workExperienceItems", required = false) List<String> workExperienceItems,
-                           @RequestParam(value = "softSkillsItems", required = false) List<String> softSkillsItems,
-                           @RequestParam(value = "hardSkillsItems", required = false) List<String> hardSkillsItems,
-                           RedirectAttributes redirectAttrs,
-                           Model model) {
+    public String createCV(
+            @Valid @ModelAttribute("cv") CV cv,
+            BindingResult result,
+            @RequestParam("templateId") Long templateId,
+            @RequestParam("photo") MultipartFile photo,
+            @RequestParam(value = "portfolioLinks", required = false) List<String> portfolioLinks,
+            @RequestParam(value = "knownLanguages", required = false) List<String> knownLanguages,
+            @RequestParam(value = "educationItems", required = false) List<String> educationItems,
+            @RequestParam(value = "coursesItems", required = false) List<String> coursesItems,
+            @RequestParam(value = "workExperienceItems", required = false) List<String> workExperienceItems,
+            @RequestParam(value = "softSkillsItems", required = false) List<String> softSkillsItems,
+            @RequestParam(value = "hardSkillsItems", required = false) List<String> hardSkillsItems,
+            @RequestParam(value = "hobbiesItems", required = false) List<String> hobbiesItems,
+            RedirectAttributes redirectAttrs,
+            Model model) {
 
         if (result.hasErrors()) {
             cvHelper.prepareFormAttributes(model);
@@ -68,11 +70,12 @@ public class CVController {
             Template template = cvHelper.getAndPrepareTemplate(templateId);
             cv.setTemplate(template);
 
-            // Обробка всіх текстових полів CV
             cvHelper.processAllTextFields(cv, educationItems, coursesItems,
                     workExperienceItems, softSkillsItems, hardSkillsItems);
 
-            // Обробка списків
+            // Додаємо обробку хобі
+            cvHelper.processListToStringField(hobbiesItems, cv::setHobbies);
+
             cvHelper.processListItems(portfolioLinks, cv::setPortfolioLinks);
 
             if (knownLanguages != null) {
@@ -88,6 +91,7 @@ public class CVController {
             return "generator";
         }
     }
+
 
     @GetMapping("/cv/{id}")
     public String viewCV(@PathVariable Long id, Model model) {
@@ -123,20 +127,22 @@ public class CVController {
     }
 
     @PostMapping("/cv/{id}/edit")
-    public String updateCV(@PathVariable Long id,
-                           @Valid @ModelAttribute("cv") CV cv,
-                           BindingResult result,
-                           @RequestParam("templateId") Long templateId,
-                           @RequestParam("photo") MultipartFile photo,
-                           @RequestParam(value = "portfolioLinks", required = false) List<String> portfolioLinks,
-                           @RequestParam(value = "knownLanguages", required = false) List<String> knownLanguages,
-                           @RequestParam(value = "educationItems", required = false) List<String> educationItems,
-                           @RequestParam(value = "coursesItems", required = false) List<String> coursesItems,
-                           @RequestParam(value = "workExperienceItems", required = false) List<String> workExperienceItems,
-                           @RequestParam(value = "softSkillsItems", required = false) List<String> softSkillsItems,
-                           @RequestParam(value = "hardSkillsItems", required = false) List<String> hardSkillsItems,
-                           RedirectAttributes redirectAttrs,
-                           Model model) {
+    public String updateCV(
+            @PathVariable Long id,
+            @Valid @ModelAttribute("cv") CV cv,
+            BindingResult result,
+            @RequestParam("templateId") Long templateId,
+            @RequestParam("photo") MultipartFile photo,
+            @RequestParam(value = "portfolioLinks", required = false) List<String> portfolioLinks,
+            @RequestParam(value = "knownLanguages", required = false) List<String> knownLanguages,
+            @RequestParam(value = "educationItems", required = false) List<String> educationItems,
+            @RequestParam(value = "coursesItems", required = false) List<String> coursesItems,
+            @RequestParam(value = "workExperienceItems", required = false) List<String> workExperienceItems,
+            @RequestParam(value = "softSkillsItems", required = false) List<String> softSkillsItems,
+            @RequestParam(value = "hardSkillsItems", required = false) List<String> hardSkillsItems,
+            @RequestParam(value = "hobbiesItems", required = false) List<String> hobbiesItems,
+            RedirectAttributes redirectAttrs,
+            Model model) {
 
         if (result.hasErrors()) {
             cvHelper.prepareFormAttributes(model);
@@ -144,7 +150,6 @@ public class CVController {
         }
 
         try {
-            // Отримуємо існуючий CV з бази даних
             CV existingCV = cvService.getCVById(id)
                     .orElseThrow(() -> new RuntimeException("CV не знайдено"));
 
@@ -157,7 +162,9 @@ public class CVController {
             cvHelper.processAllTextFieldsWithFallback(cv, existingCV, educationItems, coursesItems,
                     workExperienceItems, softSkillsItems, hardSkillsItems);
 
-            // Обробка списків або використання існуючих
+            // Додаємо обробку хобі
+            cvHelper.processListToStringFieldWithFallback(hobbiesItems, cv::setHobbies, existingCV.getHobbies());
+
             if (portfolioLinks != null) {
                 cvHelper.processListItems(portfolioLinks, cv::setPortfolioLinks);
             } else {
@@ -170,7 +177,6 @@ public class CVController {
                 cv.setKnownLanguages(existingCV.getKnownLanguages());
             }
 
-            // Оновлюємо CV у базі даних
             cvService.updateCV(cv, photo);
 
             redirectAttrs.addFlashAttribute("success", "CV успішно оновлено!");

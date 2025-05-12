@@ -13,6 +13,94 @@ body[data-font="Calibri"] { font-family: 'Calibri', sans-serif; }
 body[data-font="Verdana"] { font-family: 'Verdana', sans-serif; }
 body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
 
+/* Уніфіковані стилі кнопок */
+.actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Перевизначення всіх стилів кнопок для повної уніфікації */
+.btn {
+    padding: 10px 20px !important;
+    border-radius: 8px !important; /* Заокруглені прямокутники */
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    border: none !important;
+    text-transform: none !important; /* Скидаємо можливе перетворення тексту */
+    letter-spacing: normal !important; /* Скидаємо можливий letter-spacing */
+    box-shadow: none !important; /* Скидаємо можливі тіні */
+    font-family: Arial, sans-serif !important; /* Уніфікуємо шрифт для кнопок */
+}
+
+.btn:hover {
+    transform: none !important; /* Скидаємо можливу трансформацію при наведенні */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* Однаковий ефект тіні при наведенні */
+}
+
+/* Оверрайд стилів для створення однакових кнопок на всіх шаблонах */
+.btn-primary {
+    background-color: #edff00 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.btn-primary:hover {
+    background-color: #ffd700 !important;
+    font-weight: bold !important;
+}
+
+.btn-success {
+    background-color: #00b0ff !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.btn-success:hover {
+    background-color: #008ccc !important;
+    font-weight: bold !important;
+}
+
+.btn-info {
+    background-color: #4caf50 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.btn-info:hover {
+    background-color: #429544 !important;
+    font-weight: bold !important;
+}
+
+.btn-secondary {
+    background-color: #fb0000 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.btn-secondary:hover {
+    background-color: #DC0000 !important;
+    font-weight: bold !important;
+}
+
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
 /* Контейнери */
 .container {
     max-width: 1000px;
@@ -44,17 +132,16 @@ body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
 
 .photo-container,
 .photo-placeholder {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     background-color: #e9ecef;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     color: #6c757d;
-    font-size: 14px;
-    border: 1px solid #dee2e6;
-    margin: 0 auto;
+    font-size: 18px;
+    border-radius: 5px;
 }
 
 .photo {
@@ -253,62 +340,6 @@ body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
     border-bottom: 1px solid #2c3e50;
 }
 
-/* Кнопки дій */
-.actions {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.btn-group {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.btn {
-    padding: 10px 20px;
-    border-radius: 0;
-    text-decoration: none;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    border: 1px solid;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: "Arial", sans-serif;
-}
-
-.btn-primary {
-    background-color: #2c3e50;
-    color: #ffffff;
-    border-color: #2c3e50;
-}
-
-.btn-primary:hover {
-    background-color: #34495e;
-    border-color: #34495e;
-}
-
-.btn-success {
-    background-color: #27ae60;
-    color: #ffffff;
-    border-color: #27ae60;
-}
-
-.btn-success:hover {
-    background-color: #219a52;
-    border-color: #219a52;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: #2c3e50;
-    border-color: #2c3e50;
-}
-
-.btn-secondary:hover {
-    background-color: #2c3e50;
-    color: #ffffff;
-}
 
 /* Стилі для друку */
 @media print {
@@ -359,10 +390,6 @@ body[data-font="Roboto"] { font-family: 'Roboto', sans-serif; }
 
     .btn-group {
         flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
     }
 
     .name {

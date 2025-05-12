@@ -227,6 +227,26 @@ body {
     margin-top: 5px;
 }
 
+.btn-edit {
+    background-color: #FFDF00; /* Жовтий */
+    color: #000;
+}
+
+.btn-print {
+    background-color: #FF5A34; /* Помаранчевий */
+    color: #fff;
+}
+
+.btn-download-pdf {
+    background-color: #198754; /* Зелений */
+    color: #fff;
+}
+
+.btn-back {
+    background-color: #F44336; /* Червоний */
+    color: #fff;
+}
+
 /* Адаптивні стилі */
 @media (max-width: 768px) {
     .form-row, .two-column-layout {

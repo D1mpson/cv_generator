@@ -92,10 +92,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="hobbies">Хобі</label>
-                    <textarea class="form-control" id="hobbies" th:field="*{hobbies}" rows="6"
-                              placeholder="Вкажіть ваші хобі та захоплення"></textarea>
+                    <h4>Хобі</h4>
+                    <div class="hobbies-inputs">
+                        <input type="text" name="hobbiesItems" placeholder="Хобі"
+                               th:value="${cv.hobbies != null && !cv.hobbies.isEmpty() ? #strings.arraySplit(cv.hobbies, ',')[0] : ''}">
+                        <input type="text" name="hobbiesItems" placeholder="Хобі"
+                               th:value="${cv.hobbies != null && #strings.arraySplit(cv.hobbies, ',').length > 1 ? #strings.arraySplit(cv.hobbies, ',')[1] : ''}">
+                        <input type="text" name="hobbiesItems" placeholder="Хобі"
+                               th:value="${cv.hobbies != null && #strings.arraySplit(cv.hobbies, ',').length > 2 ? #strings.arraySplit(cv.hobbies, ',')[2] : ''}">
+                        <input type="text" name="hobbiesItems" placeholder="Хобі"
+                               th:value="${cv.hobbies != null && #strings.arraySplit(cv.hobbies, ',').length > 3 ? #strings.arraySplit(cv.hobbies, ',')[3] : ''}">
+                        <input type="text" name="hobbiesItems" placeholder="Хобі"
+                               th:value="${cv.hobbies != null && #strings.arraySplit(cv.hobbies, ',').length > 4 ? #strings.arraySplit(cv.hobbies, ',')[4] : ''}">
+                    </div>
                 </div>
+
             </div>
         </div>
 
